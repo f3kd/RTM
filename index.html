@@ -2,6 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Web Form</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('RadioButton1').addEventListener('change', function () {
+                radioButtonChanged('CCAPI');
+            });
+            document.getElementById('RadioButton2').addEventListener('change', function () {
+                radioButtonChanged('TMAPI');
+            });
+            document.getElementById('Button1').addEventListener('click', function () {
+                buttonClicked('connect');
+            });
+            document.getElementById('Button2').addEventListener('click', function () {
+                buttonClicked('attach');
+            });
+            document.getElementById('Button3').addEventListener('click', function () {
+                sendMessage();
+            });
+            document.getElementById('CheckBox1').addEventListener('change', function () {
+                checkBoxChanged();
+            });
+            document.getElementById('Button4').addEventListener('click', function () {
+                toggleNonHost(true);
+            });
+            document.getElementById('Button5').addEventListener('click', function () {
+                toggleNonHost(false);
+            });
+        });
+
+        function radioButtonChanged(apiType) {
+            console.log(`Radio button changed: ${apiType}`);
+            // Implement your logic here
+        }
+
+        function buttonClicked(action) {
+            console.log(`Button clicked: ${action}`);
+            if (action === 'connect') {
+                document.getElementById('Label1').innerText = 'Connecting...';
+                // Implement your connection logic here
+                setTimeout(() => { 
+                    document.getElementById('Label1').innerText = 'Connected';
+                }, 1000); // Simulating async connection process
+            } else if (action === 'attach') {
+                // Implement your attach logic here
+                console.log('Attaching...');
+            }
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('TextBox2').value;
+            console.log(`Sending message: ${message}`);
+            // Implement your message sending logic here
+        }
+
+        function checkBoxChanged() {
+            const isChecked = document.getElementById('CheckBox1').checked;
+            console.log(`CheckBox changed: ${isChecked}`);
+            // Implement your logic here
+        }
+
+        function toggleNonHost(turnOn) {
+            if (turnOn) {
+                console.log('Non Host mode: On');
+                // Implement your logic here
+            } else {
+                console.log('Non Host mode: Off');
+                // Implement your logic here
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1">
